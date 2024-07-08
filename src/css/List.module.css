@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Phone size */
+
+@media only screen and (min-width: 320px) {
+    /* The elements above the list */
+    
+    .form {
+        position: relative;
+        top: 2vh;
+        left: -6vw;
+    }
+    
+    .button {
+        margin-left: 30vw;
+        margin-bottom: 2vh;
+        cursor: pointer;
+    }
+    
+    .search {
+        background-color: white;
+        border-radius: 0.5cm;
+        margin-bottom: 4vh;
+        margin-left: 4vw;
+    }
+    
+    .text {
+        position: relative;
+        left: -4vw;
+        font-size: 0.5cm;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif;
+        color: red;
+    }
+    
+    /* The list */
+    
+    .list {
+        position: relative;
+        margin-top: 3vh;
+        left: -5vw;
+    }
+    
+    .item {
+        width: 6.5cm;
+        height: 8cm;
+        background-color: white;
+        line-height: 2;
+        font-family: "Montserrat", sans-serif;
+        color: red;
+        border-radius: 0.3cm;
+        margin-bottom: 4vh;
+    }
+    
+    .texts {
+        margin-left: 1vw;
+        font-size: 0.3cm;
+    }
+
+    /* The popup */
+
+.popupForm {
+    position: relative;
+    top: 2vh;
+    left: -5vw;
+    z-index: 1;
+}
+
+.popup {
+    min-width: 5cm;
+    height: 13.5cm;
+    background-color: white;
+    padding-left: 4vw;
+    padding-top: 1vh;
+    border-radius: 0.2cm;
+}
+
+.popup > .closeIcon {
+    position: absolute;
+    margin-top: 0.1%;
+    margin-left: 82%;
+    cursor: pointer;
+}
+
+.popup > .label {
+    color: red;
+    font-size: 0.5cm;
+    font-weight: bolder;
+    font-family: "Montserrat", sans-serif;
+}
+
+.popup > .input {
+    width: 6cm;
+    height: 1cm;
+    background-color: yellow;
+    margin-bottom: 3vh;
+}
+
+.popup > .button {
+    position: absolute;
+    margin-top: 11vh;
+    margin-left: -50vw;
+}
+}
+
+/* Tablet size */
+
+@media only screen and (min-width: 768px) {
+    /* The elements above the list */
+    
+    .form {
+        position: relative;
+        top: 2vh;
+        left: -6vw;
+    }
+    
+    .button {
+        margin-left: 6vw;
+        margin-bottom: 2vh;
+        cursor: pointer;
+    }
+    
+    .search {
+        background-color: white;
+        border-radius: 0.5cm;
+        margin-bottom: 4vh;
+    }
+    
+    .text {
+        position: relative;
+        left: -2vw;
+        font-size: 0.7cm;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif;
+        color: red;
+    }
+    
+    /* The list */
+    
+    .list {
+        position: relative;
+        margin-top: 3vh;
+        left: -2vw;
+    }
+    
+    .item {
+        width: 11.5cm;
+        height: 10cm;
+        background-color: white;
+        line-height: 2.2;
+        font-family: "Montserrat", sans-serif;
+        color: red;
+        border-radius: 0.3cm;
+        margin-bottom: 7vh;
+    }
+    
+    .texts {
+        margin-left: 1vw;
+        font-size: 0.5cm;
+    }
+
+    /* The popup */
+
+.popupForm {
+    position: relative;
+    top: 2vh;
+    left: -2vw;
+    z-index: 1;
+}
+
+.popup {
+    max-width: 11cm;
+    height: 14cm;
+    background-color: white;
+    padding-left: 6vw;
+    padding-top: 1vh;
+    border-radius: 0.2cm;
+}
+
+.popup > .closeIcon {
+    position: absolute;
+    margin-top: 0.1%;
+    margin-left: 82%;
+    cursor: pointer;
+}
+
+.popup > .label {
+    color: red;
+    font-size: 0.5cm;
+    font-weight: bolder;
+    font-family: "Montserrat", sans-serif;
+}
+
+.popup > .input {
+    width: 8cm;
+    height: 1cm;
+    background-color: yellow;
+    margin-bottom: 3vh;
+}
+
+.popup > .button {
+    position: absolute;
+    margin-top: 7.8vh;
+    margin-left: -25vw;
+}
+}
+
+/* Pc size */
+
+@media only screen and (min-width: 1024px) {
+/* The elements above the list */
+
+.form {
+    position: relative;
+    top: 2vh;
+    left: -6vw;
+}
+
+.button {
+    margin-left: 4vw;
+    margin-bottom: 2vh;
+    cursor: pointer;
+}
+
+.search {
+    background-color: white;
+    border-radius: 0.5cm;
+    margin-bottom: 4vh;
+}
+
+.text {
+    position: relative;
+    left: -3vw;
+    font-size: 0.7cm;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    color: red;
+    top: 1vh;
+}
+
+/* The list */
+
+.list {
+    position: relative;
+    margin-top: 7vh;
+    left: -3vw;
+}
+
+.item {
+    width: 12cm;
+    height: 10cm;
+    background-color: white;
+    line-height: 2.3;
+    font-family: "Montserrat", sans-serif;
+    color: red;
+    border-radius: 0.3cm;
+    margin-bottom: 7vh;
+}
+
+.texts {
+    margin-left: 1vw;
+}
+
+/* The popup */
+
+.popupForm {
+    position: relative;
+    top: 4vh;
+    left: -2vw;
+    z-index: 1;
+}
+
+.popup {
+    min-width: 12.5cm;
+    height: 14cm;
+    background-color: white;
+    padding-left: 4vw;
+    padding-top: 1vh;
+    border-radius: 0.2cm;
+}
+
+.popup > .closeIcon {
+    position: absolute;
+    margin-top: 0.1%;
+    margin-left: 82%;
+    cursor: pointer;
+}
+
+.popup > .label {
+    color: red;
+    font-size: 0.5cm;
+    font-weight: bolder;
+    font-family: "Montserrat", sans-serif;
+}
+
+.popup > .input {
+    width: 10cm;
+    height: 1cm;
+    background-color: yellow;
+    margin-bottom: 3vh;
+}
+
+.popup > .button {
+    position: absolute;
+    margin-top: 9vh;
+    margin-left: -20vw;
+}
+}
