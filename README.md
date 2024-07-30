@@ -14,3 +14,4 @@ Currently, two official plugins are available:
 "# events-lists-wincademy" 
 "# events-lists-wincademy" 
 "# events-lists-winacademy" 
+"# events-lists-winacademy" 
