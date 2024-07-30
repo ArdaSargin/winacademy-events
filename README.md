@@ -9,3 +9,4 @@ Currently, two official plugins are available:
 "# events-lists-wincacademy" 
 "# events-lists-wincademy" 
 "# events-lists-wincademy" 
+"# events-lists-wincademy" 
