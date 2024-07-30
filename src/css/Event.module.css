@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* Phone size */
 
@@ -33,7 +33,6 @@
     border-bottom-left-radius: 0.5cm;
     width: 3.5cm;
     height: 9cm;
-    cursor: pointer;
 }
 
 .layout {
@@ -113,9 +112,19 @@
     font-size: 0.3cm;
     font-family: "Montserrat", sans-serif;
     border: none;
-    width: 12cm;
+    width: 2.8cm;
     margin-top: -3.6vh;
     margin-bottom: -0.2vh;
+}
+
+.list > .back {
+    max-width: 0.4cm;
+    max-height: 0.6cm;
+    margin-left: 1.7vw;
+    margin-top: -1.4vh;
+    color: hwb(210 93% 3%);
+    background-color: rgb(255, 0, 0);
+    font-size: 0.3cm
 }
 
 /* The warning */
@@ -190,7 +199,6 @@
     border-bottom-left-radius: 0.5cm;
     width: 8cm;
     height: 10cm;
-    cursor: pointer;
 }
 
 .layout {
@@ -270,8 +278,17 @@
     font-size: 0.5cm;
     font-family: "Montserrat", sans-serif;
     border: none;
-    width: 12cm;
-    margin-top: -1vh;
+    width: 9.5cm;
+    margin-top: -1.5vh;
+}
+
+.list > .back {
+    max-width: 0.4cm;
+    max-height: 1cm;
+    margin-left: 0.9vw;
+    margin-top: -1.4vh;
+    color: hwb(210 93% 3%);
+    background-color: rgb(255, 0, 0);
 }
 
 /* The warning */
@@ -346,7 +363,6 @@
     border-bottom-left-radius: 0.5cm;
     width: 10cm;
     height: 10cm;
-    cursor: pointer;
 }
 
 .layout {
@@ -427,6 +443,16 @@
     font-family: "Montserrat", sans-serif;
     border: none;
     width: 12cm;
+    cursor: pointer;
+}
+
+.list > .back {
+    padding: 0.5cm 0.8cm;
+    margin-left: 2vw;
+    margin-top: -1.2vh;
+    color: hwb(210 93% 3%);
+    background-color: rgb(255, 0, 0);
+    font-size: 0.4cm;
 }
 
 /* The warning */

@@ -35,40 +35,24 @@ export default function EventPage() {
         connection();
     }, [params.id]);
 
-    // Showing a form to update
-
-    const form = (
-         <Flex className={styles.form}>
-            <Input className={styles.input} type='text' defaultValue={title || events.title} onChange={(event) => setTitle(event.target.value)} autoFocus={true} />
-            <Input className={styles.input} type='text' defaultValue={description || events.description} onChange={(event) => setDescription(event.target.value)} />
-            <Input className={styles.input} type='date' defaultValue={startTime || events.startTime} onChange={(event) => setStartTime(event.target.value)} />
-            <Input className={styles.input} type='date' defaultValue={endTime || events.endTime} onChange={(event) => setEndTime(event.target.value)} />
-            <Input className={styles.input} type='text' defaultValue={image || events.image} onChange={(event) => setImage(event.target.value)} placeholder='copy/paste a url in here'/>
-         </Flex>
-    );
-
     // Edit content
     
     const editFunction = (e) => {
         e.preventDefault();
-        if (title === '' || description === '' || startTime === '' || endTime === '' || image === '') {
-            toast({
-                title: "Update all the fields!",
-                position: "top",
-                status: "error",
-                isClosable: true
-            });
-        } else {
-            editEvent(params.id, title, description, image, startTime, endTime);
-            back('/');
-            toast({
+        const updatedTitle = title || events.title;
+        const updatedDescription = description || events.description;
+        const updatedStartTime = startTime || events.startTime;
+        const updatedEndTime= endTime || events.endTime;
+        const updatedImage = image || events.image;
+        editEvent(params.id, updatedTitle, updatedDescription, updatedImage, updatedStartTime, updatedEndTime);
+        back('/');
+        toast({
                 title: "Everthing is uploaded successfuly!",
                 position: "top",
                 status: "success",
                 isClosable: true
             });
         }
-    }
 
     // Delete content
 
@@ -100,8 +84,20 @@ export default function EventPage() {
 
     // Saving a deleting events
 
-    const saveEdit = <Button className={styles.icons} onClick={editFunction}>Edit <EditIcon boxSize={5} color="green.100" /></Button>;
+    const saveEdit = <Button className={styles.icons} onClick={editFunction}>Save <EditIcon boxSize={5} color="green.100" /></Button>;
     const saveDelete = <Button className={styles.icons} onClick={deleteFunction}>Delete <DeleteIcon  boxSize={5} color="red.100" /></Button>;
+
+    // Showing the form
+
+    function showForm() {
+        setEditForm(!editForm);
+        toast({
+            title: "Click on the text to update content!",
+            position: "top",
+            status: "info",
+            isClosable: true
+        });
+    }
 
     return (
         <Container>
@@ -117,42 +113,47 @@ export default function EventPage() {
             <Grid className={styles.layout}>
              <GridItem className={styles.grid}>
                   <Box className={styles.list}>
-                    {editForm ? <Input className={styles.input} type='text' defaultValue={title || events.title} onChange={(event) => setTitle(event.target.value)} autoFocus={true} /> : <Text>{events.title}</Text>}
+                    {editForm ? <Input className={styles.input} type='text' defaultValue={title || events.title} onChange={(event) => setTitle(event.target.value)} /> : <Text>{events.title}</Text>}
+                    {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
                   </Box>
              </GridItem>
 
              <GridItem className={styles.grid}>
                 <Box className={styles.list}>
                  {editForm ? <Input className={styles.input} type='text' defaultValue={description || events.description} onChange={(event) => setDescription(event.target.value)} /> : <Text>{events.description}</Text>}
+                 {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
                 </Box>
              </GridItem>
 
              <GridItem className={styles.grid}>
                 <Box className={styles.list}>
                  {editForm ? <Input className={styles.input} type='date' defaultValue={startTime || events.startTime} onChange={(event) => setStartTime(event.target.value)} /> : <Text>{events.startTime}</Text>}
+                 {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
                 </Box>
              </GridItem>
 
              <GridItem className={styles.grid}>
                 <Box className={styles.list}>
                  {editForm ? <Input className={styles.input} type='date' defaultValue={endTime || events.endTime} onChange={(event) => setEndTime(event.target.value)} /> : <Text>{events.endTime}</Text>}
+                 {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
                 </Box>
              </GridItem>
 
              <GridItem className={styles.grid}>
                 <Box className={styles.list}>
-                 {editForm ? <Input className={styles.input} type='text' defaultValue={image || events.image} onChange={(event) => setImage(event.target.value)} placeholder='copy/paste a url in here'/> : <Text>Edit image</Text>}
+                 {editForm ? <Input className={styles.input} type='text' onChange={(event) => setImage(event.target.value)} placeholder='copy/paste a url in here' /> : <Text>Edit image</Text>}
+                 {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
                 </Box>
              </GridItem>
             </Grid>
 
             {/* The footer */}
             <Box className={styles.footer} as='footer'> 
-                {editForm ? saveEdit : <Button className={styles.icons} onClick={() => setEditForm(!editForm)}>Edit <EditIcon boxSize={5} color="green.100" /></Button>}
-                {deleteAction ? saveDelete : <Button className={styles.icons} onClick={deleteFunction}>Delete <DeleteIcon  boxSize={5} color="red.100" /></Button>}
+                {editForm ? <Button className={styles.icons} onClick={editFunction}>Save <EditIcon boxSize={5} color="green.100" /></Button> : <Button className={styles.icons} onClick={showForm}>Edit <EditIcon boxSize={5} color="green.100" /></Button>}
+                <Button className={styles.icons} onClick={deleteFunction}>Delete <DeleteIcon  boxSize={5} color="red.100" /></Button>
             </Box>
 
-            {/* Deleting the form */}
+            {/* The delete message */}
             {deleteAction && deleteQuestion}
         </Container>
                 ) :
