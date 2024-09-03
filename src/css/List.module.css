@@ -74,7 +74,7 @@
 
 .popup {
     min-width: 5cm;
-    height: 13.5cm;
+    height: 14cm;
     background-color: white;
     padding-left: 4vw;
     padding-top: 1vh;
@@ -88,24 +88,34 @@
     cursor: pointer;
 }
 
-.popup > .label {
+.popup > .layout {
+    width: 5.5cm;
+    height: 13cm;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 5vh;
+}
+
+.layout > .label {
     color: red;
     font-size: 0.5cm;
     font-weight: bolder;
     font-family: "Montserrat", sans-serif;
 }
 
-.popup > .input {
-    width: 6cm;
+.layout > .input {
+    width: 5.5cm;
     height: 1cm;
     background-color: yellow;
     margin-bottom: 3vh;
 }
 
-.popup > .button {
-    position: absolute;
-    margin-top: 11vh;
-    margin-left: -50vw;
+.layout > .button {
+    margin-top: -1vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 }
 
@@ -167,13 +177,6 @@
 
     /* The popup */
 
-.popupForm {
-    position: relative;
-    top: 2vh;
-    left: -2vw;
-    z-index: 1;
-}
-
 .popup {
     max-width: 11cm;
     height: 14cm;
@@ -190,24 +193,33 @@
     cursor: pointer;
 }
 
-.popup > .label {
+.popup > .layout {
+    width: 8.5cm;
+    height: 13cm;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 3vh;
+}
+
+.layout > .label {
     color: red;
     font-size: 0.5cm;
     font-weight: bolder;
     font-family: "Montserrat", sans-serif;
 }
 
-.popup > .input {
+.layout > .input {
     width: 8cm;
     height: 1cm;
     background-color: yellow;
     margin-bottom: 3vh;
 }
 
-.popup > .button {
-    position: absolute;
-    margin-top: 7.8vh;
-    margin-left: -25vw;
+.layout > .button {
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 }
 
@@ -269,13 +281,6 @@
 
 /* The popup */
 
-.popupForm {
-    position: relative;
-    top: 4vh;
-    left: -2vw;
-    z-index: 1;
-}
-
 .popup {
     min-width: 12.5cm;
     height: 14cm;
@@ -292,23 +297,33 @@
     cursor: pointer;
 }
 
-.popup > .label {
+.popup > .layout {
+    width: 10cm;
+    height: 14cm;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 3vh;
+}
+
+.layout > .label {
     color: red;
     font-size: 0.5cm;
     font-weight: bolder;
     font-family: "Montserrat", sans-serif;
 }
 
-.popup > .input {
+.layout > .input {
     width: 10cm;
     height: 1cm;
     background-color: yellow;
     margin-bottom: 3vh;
 }
 
-.popup > .button {
-    position: absolute;
-    margin-top: 9vh;
-    margin-left: -20vw;
+.layout > .button {
+    margin-top: 0vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
 }
 }

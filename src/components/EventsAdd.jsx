@@ -1,5 +1,5 @@
 import styles from '../css/List.module.css';
-import { Box, Button, FormControl, FormLabel, Input, useToast } from '@chakra-ui/react';
+import { Box, Button, FormControl, FormLabel, Input, useToast, Flex } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons'
 import React, { useState } from 'react';
 import EventsContext from '../context/Events';
@@ -54,6 +54,7 @@ export default function EventsAdd() {
              {close}
             </Box>
 
+            <Flex className={styles.layout}>
             <FormLabel className={styles.label} htmlFor='Title'>Title</FormLabel>
             <Input className={styles.input} type='text' value={title} onChange={(e) => setTitle(e.target.value)} />
 
@@ -69,6 +70,7 @@ export default function EventsAdd() {
             <FormLabel className={styles.label} htmlFor='End time'>End Time</FormLabel>
             <Input className={styles.input} type='date' value={endTime} onChange={(e) => setEndTime(e.target.value)} />
             <Button className={styles.button} type='submit' onClick={eventAdded}>Add event</Button>
+            </Flex>
         </FormControl>
     );
 }

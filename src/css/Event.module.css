@@ -11,74 +11,45 @@
 @media only screen and (min-width: 320px) {
     /* The layout */
 
-.box {
-    position: relative;
-    margin-top: 13vh;
-    margin-left: -1.5vw;
-    background-color: #F1EC7C;
-    width: 7.8cm;
-    height: 9cm;
-    border-radius: 0.5cm;
-    outline: 0.2cm red solid;
+.item {
+        min-width: 6.5cm;
+        height: 8cm;
+        background-color: white;
+        line-height: 2.3;
+        font-family: "Montserrat", sans-serif;
+        color: red;
+        border-radius: 0.3cm;
+        outline-offset: 0cm;
+        outline-color: red;
+        outline-style: solid;
+        outline-width: 0.5cm;
+        position: relative;
+        margin: 15vh -1vw;
 }
-
-.imagePosition {
-    position: absolute;
-    top: 0vh;
-    left: 0vw;
-}
-
-.image {
-    border-top-left-radius: 0.5cm;
-    border-bottom-left-radius: 0.5cm;
-    width: 3.5cm;
-    height: 9cm;
-}
-
-.layout {
-    position: absolute;
-    top: 0vh;
-    left: 41vw;
-}
-
-.layout > .grid {
-    padding-bottom: 3vh;
-    padding-top: 5vh;
-    padding-left: 3vw;
-    color: red;
-    background-color: transparent;
-    font-size: 0.3cm;
-    font-family: "Montserrat", sans-serif;
-    border-bottom: white dashed 0.1cm;
-    width: 4.3cm;
-}
-
-/* The list */
-
-.list {
-    display: flex;
-    flex-direction: row;
+    
+.texts {
+        margin-left: 1vw;
 }
 
 /* The footer */
 
 .footer {
-    width: 8.1cm;
-    height: 3.8cm;
+    min-width: 8cm;
+    height: 3.5cm;
     background-color: white;
     border-bottom-left-radius: 0.5cm;
     border-bottom-right-radius: 0.5cm;
     z-index: -1;
     position: absolute;
-    margin-top: 53vh;
-    margin-left: -7.1vw;
-    padding-top: 17.5vh;
-    padding-left: 5vw;
+    margin-top: -15vh;
+    margin-left: -6vw;
+    padding-top: 8vh;
+    padding-left: 2vw;
 }
 
 .footer > .icons:first-child {
-    width: 3.5cm;
-    height: 1cm;
+    width: 3.3cm;
+    height: 1.5cm;
     background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
     font-size: 0.5cm;
@@ -90,8 +61,8 @@
 }
 
 .footer > .icons:last-child {
-    width: 3.5cm;
-    height: 1cm;
+    width: 3.3cm;
+    height: 1.5cm;
     background-color: rgb(255, 0, 0);
     color: hwb(210 93% 3%);
     font-size: 0.5cm;
@@ -101,30 +72,68 @@
     line-height: 0.9;
 }
 
-/* The inputs */
+/* The popup */
 
-.list > .input {
-    padding-bottom: 2vh;
-    padding-top: 2vh;
-    padding-left: 1vw;
-    color: red;
-    background-color: transparent;
-    font-size: 0.3cm;
-    font-family: "Montserrat", sans-serif;
-    border: none;
-    width: 2.8cm;
-    margin-top: -3.6vh;
-    margin-bottom: -0.2vh;
+.popup {
+    min-width: 8.2cm;
+    height: 15cm;
+    background-color: #F1EC7C;
+    padding-top: 1vh;
+    border-radius: 0.2cm;
+    position: relative;
+    margin: -80vh -8vw;
+    z-index: 1;
+    border: red solid 0.1cm;
 }
 
-.list > .back {
-    max-width: 0.4cm;
-    max-height: 0.6cm;
-    margin-left: 1.7vw;
-    margin-top: -1.4vh;
+.popup > .closeIcon {
+    position: absolute;
+    margin-top: -2%;
+    margin-left: 93%;
+    cursor: pointer;
+}
+
+.popup > .layout {
+    width: 10cm;
+    height: 14cm;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 3vh;
+    margin-left: 2vw;
+}
+
+.layout > .label {
+    color: red;
+    font-size: 0.5cm;
+    font-weight: bolder;
+    font-family: "Montserrat", sans-serif;
+}
+
+.layout > .input {
+    width: 7.5cm;
+    height: 1.5cm;
+    background-color: transparent;
+    margin-bottom: 3vh;
+    color: red;
+    border-bottom: white dashed 0.1cm;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-size: 0.5cm;
+}
+
+.layout > .button {
+    margin-top: 0vh;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
-    background-color: rgb(255, 0, 0);
-    font-size: 0.3cm
+    display: inline;
+    height: 1.5cm;
+    font-size: 0.7cm;
+    width: 5cm;
 }
 
 /* The warning */
@@ -134,8 +143,8 @@
     height: 4cm;
     background-color: #F1EC7C;
     position: relative;
-    top: 18vh;
-    left: 1vw;
+    top: -61vh;
+    left: 0vw;
     border-radius: 0.1cm;
     outline: 0.2cm red solid;
     z-index: 1;
@@ -146,25 +155,29 @@
     font-size: 0.6cm;
     font-family: "Montserrat", sans-serif;
     color: red;
-    margin-bottom: 3vh;
+    margin-bottom: 1vh;
 }
 
-.warning > .yes {
+.warning > .buttons {
+    flex-direction: row;
+    margin-right: 0.5vw;
+}
+
+.warning > .buttons > .yes {
     background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
     cursor: pointer;
     border-radius: 0cm;
-    margin-left: 9vw;
-    width: 2cm;
+    width: 2.5cm;
+    margin-right: 5vw;
 }
 
-.warning > .no {
+.warning > .buttons > .no {
     background-color: rgb(255, 0, 0);
     color: hwb(210 93% 3%);
     cursor: pointer;
     border-radius: 0cm;
-    margin-left: 14vw;
-    width: 2cm;
+    width: 2.5cm;
 }
 
 .warning > .buttons:hover {
@@ -177,73 +190,44 @@
 @media only screen and (min-width: 768px) {
     /* The layout */
 
-.box {
-    position: relative;
-    margin-top: 15vh;
-    margin-left: -16vw;
-    background-color: #F1EC7C;
-    width: 19.3cm;
-    height: 10cm;
-    border-radius: 0.5cm;
-    outline: 0.2cm red solid;
+.item {
+        width: 12cm;
+        height: 10cm;
+        background-color: white;
+        line-height: 2.3;
+        font-family: "Montserrat", sans-serif;
+        color: red;
+        border-radius: 0.3cm;
+        outline-offset: 0cm;
+        outline-color: red;
+        outline-style: solid;
+        outline-width: 0.5cm;
+        position: relative;
+        margin: 14vh 1vw;
 }
-
-.imagePosition {
-    position: absolute;
-    top: 0vh;
-    left: 0vw;
-}
-
-.image {
-    border-top-left-radius: 0.5cm;
-    border-bottom-left-radius: 0.5cm;
-    width: 8cm;
-    height: 10cm;
-}
-
-.layout {
-    position: absolute;
-    top: 0vh;
-    left: 39.8vw;
-}
-
-.layout > .grid {
-    padding-bottom: 2vh;
-    padding-top: 3.5vh;
-    padding-left: 1vw;
-    color: red;
-    background-color: transparent;
-    font-size: 0.5cm;
-    font-family: "Montserrat", sans-serif;
-    border-bottom: white dashed 0.1cm;
-    width: 11.2cm;
-}
-
-/* The list */
-
-.list {
-    display: flex;
-    flex-direction: row;
+    
+.texts {
+        margin-left: 1vw;
 }
 
 /* The footer */
 
 .footer {
-    width: 19.6cm;
-    height: 4.5cm;
+    width: 12.7cm;
+    height: 3.5cm;
     background-color: white;
     border-bottom-left-radius: 0.5cm;
     border-bottom-right-radius: 0.5cm;
     z-index: -1;
     position: absolute;
-    margin-top: 52vh;
-    margin-left: -16.5vw;
-    padding-top: 10.5vh;
-    padding-left: 5vw;
+    margin-top: -13vh;
+    margin-left: -1vw;
+    padding-top: 6vh;
+    padding-left: 4vw;
 }
 
 .footer > .icons:first-child {
-    width: 8cm;
+    width: 5cm;
     height: 1.5cm;
     background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
@@ -252,11 +236,11 @@
     text-align: center;
     font-size: 0.7cm;
     line-height: 0.9;
-    margin-right: 7.5vw;
+    margin-right: 5.5vw;
 }
 
 .footer > .icons:last-child {
-    width: 8cm;
+    width: 5cm;
     height: 1.5cm;
     background-color: rgb(255, 0, 0);
     color: hwb(210 93% 3%);
@@ -267,28 +251,67 @@
     line-height: 0.9;
 }
 
-/* The inputs */
+/* The popup */
 
-.list > .input {
-    padding-bottom: 2vh;
-    padding-top: 2.5vh;
-    padding-left: 1vw;
-    color: red;
-    background-color: transparent;
-    font-size: 0.5cm;
-    font-family: "Montserrat", sans-serif;
-    border: none;
-    width: 9.5cm;
-    margin-top: -1.5vh;
+.popup {
+    min-width: 13.5cm;
+    height: 15cm;
+    background-color: #F1EC7C;
+    padding-top: 1vh;
+    border-radius: 0.2cm;
+    position: relative;
+    margin: -75vh -2vw;
+    z-index: 1;
+    border: red solid 0.1cm;
 }
 
-.list > .back {
-    max-width: 0.4cm;
-    max-height: 1cm;
-    margin-left: 0.9vw;
-    margin-top: -1.4vh;
+.popup > .closeIcon {
+    position: absolute;
+    margin-top: 0.1%;
+    margin-left: 94%;
+    cursor: pointer;
+}
+
+.popup > .layout {
+    width: 10cm;
+    height: 14cm;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 3vh;
+    margin-left: 3vw;
+}
+
+.layout > .label {
+    color: red;
+    font-size: 0.5cm;
+    font-weight: bolder;
+    font-family: "Montserrat", sans-serif;
+}
+
+.layout > .input {
+    width: 10cm;
+    height: 1.5cm;
+    background-color: transparent;
+    margin-bottom: 3vh;
+    color: red;
+    border-bottom: white dashed 0.1cm;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-size: 0.5cm;
+}
+
+.layout > .button {
+    margin-top: 0vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
-    background-color: rgb(255, 0, 0);
+    display: inline;
+    height: 1.5cm;
+    font-size: 0.7cm;
 }
 
 /* The warning */
@@ -298,7 +321,7 @@
     height: 4cm;
     background-color: #F1EC7C;
     position: relative;
-    top: 18vh;
+    top: -55vh;
     left: 1vw;
     border-radius: 0.1cm;
     outline: 0.2cm red solid;
@@ -313,22 +336,26 @@
     margin-bottom: 3vh;
 }
 
-.warning > .yes {
+.warning > .buttons {
+    flex-direction: row;
+}
+
+.warning > .buttons > .yes {
     background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
     cursor: pointer;
     border-radius: 0cm;
-    margin-left: 2vw;
-    width: 5cm;
+    width: 4cm;
 }
 
-.warning > .no {
+.warning > .buttons > .no {
     background-color: rgb(255, 0, 0);
     color: hwb(210 93% 3%);
     cursor: pointer;
     border-radius: 0cm;
-    margin-left: 6vw;
-    width: 5cm;
+    margin-left: 30vw;
+    margin-top: -10.1vh;
+    width: 4cm;
 }
 
 .warning > .buttons:hover {
@@ -341,73 +368,44 @@
 @media only screen and (min-width: 1024px) {
     /* The layout */
 
-.box {
-    position: relative;
-    margin-top: 10vh;
-    margin-left: -20vw;
-    background-color: #F1EC7C;
-    width: 25cm;
-    height: 10cm;
-    border-radius: 0.5cm;
-    outline: 0.2cm red solid;
+.item {
+        width: 12cm;
+        height: 10cm;
+        background-color: white;
+        line-height: 2.3;
+        font-family: "Montserrat", sans-serif;
+        color: red;
+        border-radius: 0.3cm;
+        outline-offset: 0cm;
+        outline-color: red;
+        outline-style: solid;
+        outline-width: 0.5cm;
+        position: relative;
+        margin: 10vh 0vw;
 }
-
-.imagePosition {
-    position: absolute;
-    top: 0vh;
-    left: 0vw;
-}
-
-.image {
-    border-top-left-radius: 0.5cm;
-    border-bottom-left-radius: 0.5cm;
-    width: 10cm;
-    height: 10cm;
-}
-
-.layout {
-    position: absolute;
-    top: 0vh;
-    left: 29.8vw;
-}
-
-.layout > .grid {
-    padding-bottom: 2vh;
-    padding-top: 3.5vh;
-    padding-left: 1vw;
-    color: red;
-    background-color: transparent;
-    font-size: 0.6cm;
-    font-family: "Montserrat", sans-serif;
-    border-bottom: white dashed 0.1cm;
-    width: 14.9cm;
-}
-
-/* The list */
-
-.list {
-    display: flex;
-    flex-direction: row;
+    
+.texts {
+        margin-left: 1vw;
 }
 
 /* The footer */
 
 .footer {
-    width: 25.3cm;
-    height: 3.8cm;
+    width: 12.7cm;
+    height: 3.5cm;
     background-color: white;
     border-bottom-left-radius: 0.5cm;
     border-bottom-right-radius: 0.5cm;
     z-index: -1;
     position: absolute;
-    margin-top: 59vh;
-    margin-left: -18.6vw;
-    padding-top: 9vh;
-    padding-left: 5vw;
+    margin-top: -10vh;
+    margin-left: -1vw;
+    padding-top: 6vh;
+    padding-left: 2vw;
 }
 
 .footer > .icons:first-child {
-    width: 10cm;
+    width: 5cm;
     height: 1.5cm;
     background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
@@ -416,11 +414,11 @@
     text-align: center;
     font-size: 0.7cm;
     line-height: 0.9;
-    margin-right: 6.2vw;
+    margin-right: 4vw;
 }
 
 .footer > .icons:last-child {
-    width: 10cm;
+    width: 5cm;
     height: 1.5cm;
     background-color: rgb(255, 0, 0);
     color: hwb(210 93% 3%);
@@ -431,28 +429,67 @@
     line-height: 0.9;
 }
 
-/* The inputs */
+/* The popup */
 
-.list > .input {
-    padding-bottom: 2vh;
-    padding-top: 2.5vh;
-    padding-left: 1vw;
-    color: red;
-    background-color: transparent;
-    font-size: 0.6cm;
-    font-family: "Montserrat", sans-serif;
-    border: none;
-    width: 12cm;
+.popup {
+    min-width: 13.5cm;
+    height: 15cm;
+    background-color: #F1EC7C;
+    padding-top: 1vh;
+    border-radius: 0.2cm;
+    position: relative;
+    margin: -80vh -2vw;
+    z-index: 1;
+    border: red solid 0.1cm;
+}
+
+.popup > .closeIcon {
+    position: absolute;
+    margin-top: 0.1%;
+    margin-left: 94%;
     cursor: pointer;
 }
 
-.list > .back {
-    padding: 0.5cm 0.8cm;
+.popup > .layout {
+    width: 10cm;
+    height: 14cm;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 3vh;
     margin-left: 2vw;
-    margin-top: -1.2vh;
+}
+
+.layout > .label {
+    color: red;
+    font-size: 0.5cm;
+    font-weight: bolder;
+    font-family: "Montserrat", sans-serif;
+}
+
+.layout > .input {
+    width: 10cm;
+    height: 1.5cm;
+    background-color: transparent;
+    margin-bottom: 3vh;
+    color: red;
+    border-bottom: white dashed 0.1cm;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    font-size: 0.5cm;
+}
+
+.layout > .button {
+    margin-top: 0vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
-    background-color: rgb(255, 0, 0);
-    font-size: 0.4cm;
+    display: inline;
+    height: 1.5cm;
+    font-size: 0.7cm;
 }
 
 /* The warning */
@@ -462,8 +499,8 @@
     height: 4cm;
     background-color: #F1EC7C;
     position: relative;
-    top: 18vh;
-    left: 1vw;
+    top: -55vh;
+    left: 0vw;
     border-radius: 0.1cm;
     outline: 0.2cm red solid;
     z-index: 1;
@@ -477,22 +514,27 @@
     margin-bottom: 3vh;
 }
 
-.warning > .yes {
+.warning > .buttons {
+    flex-direction: row;
+}
+
+.warning > .buttons > .yes {
     background-color: hsl(120, 76%, 49%);
     color: hwb(210 93% 3%);
     cursor: pointer;
     border-radius: 0cm;
     margin-left: 0vw;
-    width: 5cm;
+    width: 4cm;
 }
 
-.warning > .no {
+.warning > .buttons > .no {
     background-color: rgb(255, 0, 0);
     color: hwb(210 93% 3%);
     cursor: pointer;
     border-radius: 0cm;
-    margin-left: 4.5vw;
-    width: 5cm;
+    margin-left: 17vw;
+    margin-top: -11.5vh;
+    width: 4cm;
 }
 
 .warning > .buttons:hover {

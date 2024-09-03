@@ -1,15 +1,16 @@
 import styles from '../css/Event.module.css';
-import { Box, Container, Flex, Grid, GridItem, Img, Input, Text, FormControl, FormLabel, Button, useToast } from '@chakra-ui/react';
+import { Box, Container, Flex, Grid, GridItem, Img, Input, Text, FormControl, FormLabel, Button, useToast, UnorderedList } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import EventsContext from '../context/Events';
 import contextFunction from '../hooks/Context';
-import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
+import { EditIcon, DeleteIcon, CloseIcon } from '@chakra-ui/icons';
 
 export default function EventPage() {
     const [events, setEvents] = useState([]);
     const [editForm, setEditForm] = useState(false);
     const [deleteAction, setDeleteAction] = useState(false);
+    const [closeForm, setCloseForm] = useState(false);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
@@ -17,6 +18,7 @@ export default function EventPage() {
     const [endTime, setEndTime] = useState('');
 
     const params = useParams();
+    const eventEdited = useNavigate();
     const back = useNavigate();
 
     const { editEvent } = contextFunction();
@@ -35,8 +37,12 @@ export default function EventPage() {
         connection();
     }, [params.id]);
 
-    // Edit content
-    
+    // Close form
+
+    const close = <CloseIcon onClick={() => setCloseForm(!closeForm)}/>
+
+    // Update content
+
     const editFunction = (e) => {
         e.preventDefault();
         const updatedTitle = title || events.title;
@@ -45,21 +51,25 @@ export default function EventPage() {
         const updatedEndTime= endTime || events.endTime;
         const updatedImage = image || events.image;
         editEvent(params.id, updatedTitle, updatedDescription, updatedImage, updatedStartTime, updatedEndTime);
-        back('/');
         toast({
                 title: "Everthing is uploaded successfuly!",
                 position: "top",
                 status: "success",
                 isClosable: true
             });
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         }
 
     // Delete content
 
     const deleteQuestion = <FormControl className={styles.warning}>
         <Text className={styles.warningText}>Are you sure you want to delete something?</Text>
-        <Button className={styles.yes} onClick={yes}>Yes</Button>
-        <Button className={styles.no} onClick={no}>No</Button>
+        <UnorderedList className={styles.buttons}>
+         <Button className={styles.yes} onClick={yes}>Yes</Button>
+         <Button className={styles.no} onClick={no}>No</Button>
+        </UnorderedList>
     </FormControl>;
 
     function yes() {
@@ -82,84 +92,65 @@ export default function EventPage() {
         setDeleteAction(!deleteAction);
     }
 
-    // Saving a deleting events
+    // The popup form
 
-    const saveEdit = <Button className={styles.icons} onClick={editFunction}>Save <EditIcon boxSize={5} color="green.100" /></Button>;
-    const saveDelete = <Button className={styles.icons} onClick={deleteFunction}>Delete <DeleteIcon  boxSize={5} color="red.100" /></Button>;
+    const popup = (
+        <FormControl as='form' className={styles.popup}>
+            {/* If the cross is clicked */}
+            {closeForm && window.location.reload()}
+            <Box className={styles.closeIcon}>
+             {close}
+            </Box>
 
-    // Showing the form
+            <Flex className={styles.layout}>
+            <FormLabel className={styles.label} htmlFor='Title'>Title</FormLabel>
+            <Input className={styles.input} type='text' defaultValue={events.title || ''} onChange={(e) => setTitle(e.target.value)} autoFocus={true} />
 
-    function showForm() {
-        setEditForm(!editForm);
-        toast({
-            title: "Click on the text to update content!",
-            position: "top",
-            status: "info",
-            isClosable: true
-        });
-    }
+            <FormLabel className={styles.label} htmlFor='Description'>Description</FormLabel>
+            <Input className={styles.input} type='text' defaultValue={events.description || ''} onChange={(e) => setDescription(e.target.value)} />
+
+            <FormLabel className={styles.label} htmlFor='Image'>Image</FormLabel>
+            <Input className={styles.input} type='text' placeholder='copy/paste a url in here' defaultValue={events.image || ''} onChange={(e) => setImage(e.target.value)} />
+
+            <FormLabel className={styles.label} htmlFor='Start time'>Start Time</FormLabel>
+            <Input className={styles.input} type='date' defaultValue={events.startTime || ''} onChange={(e) => setStartTime(e.target.value)} />
+
+            <FormLabel className={styles.label} htmlFor='End time'>End Time</FormLabel>
+            <Input className={styles.input} type='date' defaultValue={events.endTime || ''} onChange={(e) => setEndTime(e.target.value)} />
+            <Button className={styles.button} type='submit' onClick={editFunction}>Save <EditIcon boxSize={6} color="green.100"/></Button>
+            </Flex>
+        </FormControl>
+    );
 
     return (
         <Container>
-            <Flex className={styles.box}>
-            {/* Displaying the list */}
             {
                 events ? (
-                    <Container>
-            <Box className={styles.imagePosition}>
-                <Img className={styles.image} src={events.image} alt={events.title} />
-            </Box>
+               <Container>
+                <Flex className={styles.item}>
+                    <Box>
+                     <Text fontSize={{base:13.5, md:13.5, lg:20}} className={styles.texts}>{events.title}</Text>
+                     <Text fontSize={{base:13.5, md:13.5, lg:20}} className={styles.texts}>{events.description}</Text>
+                     <Img src={events.image} alt={events.title} width={1000} height={{base:170, md:200, lg:200}}/>
+                     <Text fontSize={{base:13.5, md:13.5, lg:20}} className={styles.texts}>{events.startTime}</Text>
+                     <Text fontSize={{base:13.5, md:13.5, lg:20}} className={styles.texts}>{events.endTime}</Text>
+                    </Box>
+                </Flex>
 
-            <Grid className={styles.layout}>
-             <GridItem className={styles.grid}>
-                  <Box className={styles.list}>
-                    {editForm ? <Input className={styles.input} type='text' defaultValue={title || events.title} onChange={(event) => setTitle(event.target.value)} /> : <Text>{events.title}</Text>}
-                    {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
-                  </Box>
-             </GridItem>
+                
+                 <Box as='footer' className={styles.footer}>
+                    <Button type='button' className={styles.icons} onClick={() => setEditForm(!editForm)}>Edit <EditIcon boxSize={5} color="green.100"/></Button>
+                    <Button type='button' className={styles.icons} onClick={deleteFunction}>Delete <DeleteIcon boxSize={5} color="red.100"/></Button>
+                 </Box>
 
-             <GridItem className={styles.grid}>
-                <Box className={styles.list}>
-                 {editForm ? <Input className={styles.input} type='text' defaultValue={description || events.description} onChange={(event) => setDescription(event.target.value)} /> : <Text>{events.description}</Text>}
-                 {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
-                </Box>
-             </GridItem>
+                 {/* The edit form */}
+                 {editForm && popup}
 
-             <GridItem className={styles.grid}>
-                <Box className={styles.list}>
-                 {editForm ? <Input className={styles.input} type='date' defaultValue={startTime || events.startTime} onChange={(event) => setStartTime(event.target.value)} /> : <Text>{events.startTime}</Text>}
-                 {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
-                </Box>
-             </GridItem>
-
-             <GridItem className={styles.grid}>
-                <Box className={styles.list}>
-                 {editForm ? <Input className={styles.input} type='date' defaultValue={endTime || events.endTime} onChange={(event) => setEndTime(event.target.value)} /> : <Text>{events.endTime}</Text>}
-                 {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
-                </Box>
-             </GridItem>
-
-             <GridItem className={styles.grid}>
-                <Box className={styles.list}>
-                 {editForm ? <Input className={styles.input} type='text' onChange={(event) => setImage(event.target.value)} placeholder='copy/paste a url in here' /> : <Text>Edit image</Text>}
-                 {editForm && <Button className={styles.back} onClick={() => window.location.reload()}>Back</Button>}
-                </Box>
-             </GridItem>
-            </Grid>
-
-            {/* The footer */}
-            <Box className={styles.footer} as='footer'> 
-                {editForm ? <Button className={styles.icons} onClick={editFunction}>Save <EditIcon boxSize={5} color="green.100" /></Button> : <Button className={styles.icons} onClick={showForm}>Edit <EditIcon boxSize={5} color="green.100" /></Button>}
-                <Button className={styles.icons} onClick={deleteFunction}>Delete <DeleteIcon  boxSize={5} color="red.100" /></Button>
-            </Box>
-
-            {/* The delete message */}
-            {deleteAction && deleteQuestion}
-        </Container>
-                ) :
-                null
+                 {/* The delete box */}
+                 {deleteAction && deleteQuestion}
+                </Container>
+                ) : null
             }
-        </Flex>
         </Container>
-    );
+    )
 }
